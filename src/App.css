@@ -24,6 +24,16 @@
   color: white;
 }
 
+#loading-gif{
+  position: center; 
+  top: 20; 
+  left: 150px; 
+	
+  /* Preserve aspet ratio */
+  min-width: 75%;
+  min-height: 85%;
+}
+
 .App-link {
   color: #61dafb;
 }
