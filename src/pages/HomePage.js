@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 const HomePage=()=>{
 
-
+    const navigate=useNavigate();
     const [nestID,setNestID]=useState('');
     const [username,setUsername]=useState('');
     const createNewNest=(e)=>{
@@ -12,7 +13,30 @@ const HomePage=()=>{
         setNestID(id); //This will assign new unique ID to nestID
         
         toast.success('Created a new Nest')
-    }
+    };
+
+    const joinNest=(e)=>{
+      if(!nestID || !username){
+          toast.error('Nest ID and Username required')
+          return
+      }else{
+        //We need to redirect using react-router
+        navigate(`/editor/${nestID}`,{
+            state:{
+                username,
+
+            },
+        })
+      }
+
+    };
+
+    const handleEnterKey=(e)=>{
+      
+       if(e.code==='Enter'){
+         joinNest();
+       }
+    };
 
     return <div className="homePageWrapper">
         <div className="formWrapper">
@@ -27,15 +51,18 @@ const HomePage=()=>{
                         placeholder="Nest ID"
                         onChange={(e)=>setNestID(e.target.value)}
                         value={nestID}
+                        onKeyUp={handleEnterKey}
                        />
                         <input 
                         type="text"
                         className="inputBox"
                         placeholder="Username"
                         onChange={(e)=>setUsername(e.target.value)}
-                        value={username}/>
+                        value={username}
+                        onKeyUp={handleEnterKey}
+                        />
 
-                       <button className="btn joinBtn">Join</button>
+                       <button onClick={joinNest} className="btn joinBtn">Join</button>
                        <span className="createInfo">If you don't have an invite, create &nbsp;
                        <a onClick={createNewNest} href="" className="createNewBtn">new Nest</a></span>
                 </div>
