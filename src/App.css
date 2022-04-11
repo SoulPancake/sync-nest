@@ -4,8 +4,8 @@
 
 .homePageWrapper{
   margin-top: 7%;
-  
-  height: 40vh;
+  margin-bottom: 7%;
+  height: 50vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,7 +20,7 @@
   border-radius: 50px;
   border: #000000;
   border-width: 5px;
-  width: 400px;
+  width: 350px;
   max-width: 90%;
 }
 
@@ -46,14 +46,13 @@
 }
 
 .homeScreenLogo{
-  margin-bottom: 30px;
-  padding-top: 7%;
-  padding-left: 3%;
-  padding-right: 3%;
-  top: 20;
+  margin-bottom: 25px;
+  
+  
+  
   align-items: center;
   justify-content: center;
-  height: 33vh;
+  height: 37vh;
   border-radius: 25px;
 }
 

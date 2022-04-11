@@ -6,6 +6,7 @@ import { useEffect } from 'react';
 import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import CodePage from './pages/CodePage';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
 
@@ -25,7 +26,19 @@ function App() {
       
       {showLoadingVideo?<img src={loadingGif} id="loading-gif" alt="Welcome!" />:<></>} 
       {!showLoadingVideo?
-      
+      <>
+      <div>
+        <Toaster position='top-right'
+        toastOptions={{
+          success:{
+            theme:{
+              primary:'#ff6545'
+            }
+          }
+        }}>
+
+        </Toaster>
+      </div>
       <BrowserRouter>
         <Routes>
              <Route 
@@ -36,6 +49,8 @@ function App() {
                 element={<CodePage/>} ></Route>
         </Routes>
       </BrowserRouter>
+      </>
+      
       
       :<></>} 
       
