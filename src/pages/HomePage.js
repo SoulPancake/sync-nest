@@ -17,7 +17,7 @@ const HomePage=()=>{
 
     const joinNest=(e)=>{
       if(!nestID || !username){
-          toast.error('Nest ID and Username required')
+          toast.error('Both nest ID and username required')
           return
       }else{
         //We need to redirect using react-router
