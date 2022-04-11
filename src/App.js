@@ -25,7 +25,7 @@ function App() {
       
       {showLoadingVideo?<img src={loadingGif} id="loading-gif" alt="Welcome!" />:<></>} 
       {!showLoadingVideo?
-      <div>
+      
       <BrowserRouter>
         <Routes>
              <Route 
@@ -36,7 +36,7 @@ function App() {
                 element={<CodePage/>} ></Route>
         </Routes>
       </BrowserRouter>
-      </div>
+      
       :<></>} 
       
       

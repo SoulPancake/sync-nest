@@ -2,6 +2,102 @@
   text-align: center;
 }
 
+.homePageWrapper{
+  margin-top: 7%;
+  
+  height: 40vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+   
+}
+
+.formWrapper{
+  margin-top: 9%;
+  background: #03796d;
+  padding: 20px;
+  border-radius: 50px;
+  border: #000000;
+  border-width: 5px;
+  width: 400px;
+  max-width: 90%;
+}
+
+.footer{
+  position: fixed;
+  bottom: 0;
+}
+
+.inputGroup{
+  display: flex;
+  flex-direction: column;
+}
+
+
+.mainLabel{
+  margin-bottom: 12px;
+  margin-top: 5;
+  font-size: 25px;
+}
+
+.footer a{
+  color: #fff;
+}
+
+.homeScreenLogo{
+  margin-bottom: 30px;
+  padding-top: 7%;
+  padding-left: 3%;
+  padding-right: 3%;
+  top: 20;
+  align-items: center;
+  justify-content: center;
+  height: 33vh;
+  border-radius: 25px;
+}
+
+.btn{
+  border: none;
+  padding: 10px;
+  border-radius: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: aliceblue;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.joinBtn{
+  background:#011424;
+  width: 100px;
+  margin-left: auto;
+  
+}
+
+.createInfo{
+  margin: 0 auto;
+  margin-top: 20px;
+  
+}
+
+.createNewBtn{
+  color: #eee;
+  text-decoration: none;
+  border-bottom: 1px solid;
+}
+.createNewBtn:hover,
+footer a:hover{
+  color: #ffffff;
+  border-color: antiquewhite;
+}
+
+
+
+.joinBtn:hover{
+  background-color: #000000;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -25,6 +121,7 @@
 }
 
 #loading-gif{
+  margin-top: 2%;
   position: center; 
   top: 20; 
   left: 150px; 
@@ -32,6 +129,17 @@
   /* Preserve aspet ratio */
   min-width: 75%;
   min-height: 85%;
+}
+
+.inputBox{
+  width: 90%;
+  margin-left: 2.5%;
+  padding: 10px;
+  border-radius: 7px;
+  background: #eee;
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 .App-link {
