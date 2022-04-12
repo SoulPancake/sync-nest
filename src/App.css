@@ -5,7 +5,7 @@
 .homePageWrapper{
   margin-top: 7%;
   margin-bottom: 7%;
-  height: 50vh;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -151,6 +151,7 @@ footer a:hover{
   color: #fff;
   display: flex;
   flex-direction: column;
+  margin-bottom: 0;
 }
 
 
@@ -168,8 +169,8 @@ object-fit: contain;
 }
 
 .codePageLogo:hover{
-  width:90%;
-  height: 90%;;
+  width:95%;
+  height: 95%;;
 }
 
 .mainWrap{
@@ -186,10 +187,11 @@ object-fit: contain;
 
 .copyBtn:hover,
 .leaveBtn:hover{
-  background:#06a091;
+  background:#025b52;
   font-size: 17.5px;
   margin-left: auto;
   margin-right: auto;
+  
 }
 
 .copyBtn{
@@ -206,12 +208,14 @@ object-fit: contain;
 
 .copyBtn:hover{
   width:80%;
+  color: aliceblue;
 }
 
 .leaveBtn:hover{
   margin-right: auto;
   margin-right: auto;
-  width: 60%;
+  width: 70%;
+  color: aliceblue;
   border-radius: 30px;
 }
 
@@ -250,5 +254,29 @@ object-fit: contain;
 .avatar{
   border: #000000;
   border-style: solid;
+  border-radius: 10px;
 }
+
+
+.client:hover{
+  animation: forwards;
+}
+
+
+
+
+
+
+.CodeMirror {
+  
+  min-height: 100%; 
+  scrollbar-color: black;
+  font-size: 30px;
+  line-height: 1.6;
+  
+  text-align: left;
+}
+
+
+
 
