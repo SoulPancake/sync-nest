@@ -1,9 +1,12 @@
 import React from "react";
-
-const Client=()=>{
+import Animal from "react-animals";
+const Client=({username})=>{
     return (
     <div className="client">
-        <Avatar></Avatar>
-         <span className="userName">{username}</span>
+        <Animal rounded dance className="avatar"></Animal>
+        <span className="username">{username}</span>
+         
    </div>)
-}
+};
+
+export default Client;
