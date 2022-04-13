@@ -175,6 +175,7 @@ object-fit: contain;
 }
 
 .mainWrap{
+  align-items: left;
   display: grid;
   grid-template-columns: 230px 1fr;
   height: 100vh;
@@ -260,29 +261,24 @@ object-fit: contain;
 
 
 
-#realtimeEditor{
-  height: 100%;
-  width: 100%;
+
+.mainWrap{
+  overflow: hidden;
 }
 
 
-.CodeMirror {
-  
-  min-height: 100%; 
-  
-  font-size: 30px;
-  line-height: 1.6;
-  display: flex;
-  flex-direction: column;
+
+
+
+.CodeMirror{
+  min-height: 100%;
+  font-size: 20px;
   text-align: left;
-  
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
 }
-
-
-
-
-
-
 
 
 
