@@ -10,7 +10,7 @@ import { Toaster } from 'react-hot-toast';
 
 function App() {
 
-  const [showLoadingVideo,setShowElement] = React.useState(true)
+  const [showLoadingVideo,setShowElement] = useState(true)
   useEffect(()=>{
     setTimeout(function() {
       setShowElement(false)

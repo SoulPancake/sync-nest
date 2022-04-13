@@ -1,11 +1,12 @@
-const express=require('express')
-const app=express();
-const http=require('http')
-const { Server } =require('socket.io');
+const express= require('express')
+const app= express();
+const http= require('http')
+const { Server } = require('socket.io');
 const ACTIONS = require('./src/Actions');
 
 
 const server=http.createServer(app)
+
 const io=new Server(server);
 
 const userSocketMap={}
@@ -27,8 +28,26 @@ io.on('connection',(socket)=>{
         socket.join(nestID);
         
         const clients=getAllConnectedUsers(nestID);
-        console.log(clients)
+        clients.forEach(({socketId})=>{
+            io.to(socketId).emit(ACTIONS.JOINED,{
+                clients,
+                username,
+                socketId:socketId,
+            })
+        })
 
+    });
+
+    socket.on('disconnecting', () => {
+        const rooms = [...socket.rooms];
+        rooms.forEach((nestID) => {
+            socket.in(nestID).emit(ACTIONS.DISCONNECTED, {
+                socketId: socket.id,
+                username: userSocketMap[socket.id],
+            });
+        });
+        delete userSocketMap[socket.id];
+        socket.leave();
     });
 })
 

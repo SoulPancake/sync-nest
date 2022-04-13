@@ -4,7 +4,14 @@ import toast from "react-hot-toast";
 import Client from '../components/Client'
 import Editor from "../components/Editor";
 import { initSocket } from '../socket';
-import { useLocation,useNavigate,Navigate,useParams } from "react-router-dom";
+import { useLocation,
+         useNavigate,
+         Navigate,
+         useParams 
+        } from "react-router-dom";
+
+
+
 const CodePage=()=>{
 
    const socketRef=useRef(null);
@@ -13,13 +20,61 @@ const CodePage=()=>{
    const location=useLocation();
    const reactNavigator=useNavigate();
    const { nestID }=useParams();
-
+   const [clients,setClients]=useState([]);
    
    useEffect(()=>{
        const init=async()=>{
          socketRef.current=await initSocket();
          socketRef.current.on('connect_error', (err) => handleErrors(err));
          socketRef.current.on('connect_failed', (err) => handleErrors(err));
+         socketRef.current.emit(ACTIONS.JOIN,{
+                nestID,
+                username:location.state?.username,
+         });
+
+
+         //Listening for the event in which a new user has joined the NEST
+
+         socketRef.current.on(
+            ACTIONS.JOINED,
+            ({ clients, username, socketId }) => {
+                if (username !== location.state?.username) {
+                    toast.success(`${username} joined the nest.`);
+                    console.log(`${username} joined`);
+                }
+                
+
+                setClients(clients);
+               
+            }
+        );
+
+
+        //Listening for disconnected users
+
+        socketRef.current.on(
+            ACTIONS.DISCONNECTED,
+            ({ socketId, username }) => {
+                toast(`${username} left the nest.`,
+                     {
+                        icon: '👏',
+                         style: {
+                         borderRadius: '10px',
+                         background: 'green',
+                          color: '#eee',
+                         },
+                        }
+                    );
+                
+                setClients((prev) => {
+                    return prev.filter(
+                        (client) => client.socketId !== socketId
+                    );
+                });
+            }
+        );
+
+        
 
             function handleErrors(e) {
                 console.log('socket error', e);
@@ -27,20 +82,15 @@ const CodePage=()=>{
                 reactNavigator('/');
             }
 
-         socketRef.current.emit(ACTIONS.JOIN,{
-             nestID,
-             username:location.state?.username,
-         });
+      
        };
        init();
+      
    },[]);
 
-   const [clients,setClients]=useState([
-       {socketId:1,username:'Anurag'},
-       {socketId:2,username:'Guthrie'},
-       {socketId:3,username:'Yngwie'},
-       {socketId:4,username:'Micheal'},
-    ]);
+
+
+   
     
 
     if(!location.state){
