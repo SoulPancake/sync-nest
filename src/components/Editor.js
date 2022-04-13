@@ -19,14 +19,16 @@ import 'codemirror/addon/edit/closebrackets'
              lineNumbers:true,
              indentUnit:5,
              indentWithTabs:true,
+             
       
          },);
+           
        }   
        init();
      },[]);
 
 
-    return <textarea className="editor" id="realtimeEditor"></textarea>;
+    return <textarea id="realtimeEditor"></textarea>;
     
 }
 
