@@ -121,14 +121,11 @@ footer a:hover{
 }
 
 #loading-gif{
-  margin-top: 2%;
+  margin-top: 5%;
   position: center; 
-  top: 20; 
-  left: 150px; 
-	
-  /* Preserve aspet ratio */
-  min-width: 75%;
-  min-height: 85%;
+  height:21%;
+  width: 21%;
+
 }
 
 .inputBox{

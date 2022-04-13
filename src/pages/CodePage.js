@@ -15,25 +15,25 @@ const CodePage=()=>{
    const { nestID }=useParams();
 
    
-//    useEffect(()=>{
-//        const init=async()=>{
-//          socketRef.current=await initSocket();
-//          socketRef.current.on('connect_error', (err) => handleErrors(err));
-//          socketRef.current.on('connect_failed', (err) => handleErrors(err));
+   useEffect(()=>{
+       const init=async()=>{
+         socketRef.current=await initSocket();
+         socketRef.current.on('connect_error', (err) => handleErrors(err));
+         socketRef.current.on('connect_failed', (err) => handleErrors(err));
 
-//             function handleErrors(e) {
-//                 console.log('socket error', e);
-//                 toast.error('Socket connection failed, try again later.');
-//                 reactNavigator('/');
-//             }
+            function handleErrors(e) {
+                console.log('socket error', e);
+                toast.error('Socket connection failed, try again later.');
+                reactNavigator('/');
+            }
 
-//          socketRef.current.emit(ACTIONS.JOIN,{
-//              nestID,
-//              username:location.state?.username,
-//          });
-//        };
-//        init();
-//    },[]);
+         socketRef.current.emit(ACTIONS.JOIN,{
+             nestID,
+             username:location.state?.username,
+         });
+       };
+       init();
+   },[]);
 
    const [clients,setClients]=useState([
        {socketId:1,username:'Anurag'},

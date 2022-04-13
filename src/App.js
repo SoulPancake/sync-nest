@@ -14,11 +14,11 @@ function App() {
   useEffect(()=>{
     setTimeout(function() {
       setShowElement(false)
-         }, 5000);
+         }, 1500);
        },
    [])
 
-  let loadingGif = require("./assets/gif.gif");
+  let loadingGif = require("./assets/gif2.gif");
   return (
     
 
