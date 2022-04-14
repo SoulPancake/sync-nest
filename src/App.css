@@ -214,7 +214,7 @@ object-fit: contain;
   margin-right: auto;
   margin-right: auto;
   width: 70%;
-  color: aliceblue;
+  color: rgb(255, 255, 255);
   border-radius: 30px;
 }
 
@@ -273,7 +273,7 @@ object-fit: contain;
   text-align: left;
   height: 100%;
   position: absolute;
-  top: 0px;
+  
   left: 0px;
 }
 

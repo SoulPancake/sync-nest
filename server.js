@@ -13,7 +13,9 @@ const userSocketMap={}
 
 function getAllConnectedUsers(nestID){
     //Map 
-    return Array.from(io.sockets.adapter.rooms.get(nestID) || []).map((socketId)=>{
+    
+    return Array.from(io.sockets.adapter.rooms.get(nestID) || []).map(
+        (socketId)=>{
       return {
           socketId,
           username:userSocketMap[socketId],
@@ -24,10 +26,12 @@ function getAllConnectedUsers(nestID){
 io.on('connection',(socket)=>{
     console.log('socket connected',socket.id);
     socket.on(ACTIONS.JOIN,({nestID,username})=>{
+       
         userSocketMap[socket.id]=username;
         socket.join(nestID);
         
         const clients=getAllConnectedUsers(nestID);
+        
         clients.forEach(({socketId})=>{
             io.to(socketId).emit(ACTIONS.JOINED,{
                 clients,
@@ -49,6 +53,12 @@ io.on('connection',(socket)=>{
         delete userSocketMap[socket.id];
         socket.leave();
     });
+
+    socket.on('disconnect', () => {
+        socket.removeAllListeners();
+     });
+  
+     
 })
 
 const PORT=process.env.PORT || 5000

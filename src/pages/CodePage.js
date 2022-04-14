@@ -15,6 +15,7 @@ import { useLocation,
 const CodePage=()=>{
 
    const socketRef=useRef(null);
+   const codeRef = useRef(null);
 
 
    const location=useLocation();
@@ -25,12 +26,14 @@ const CodePage=()=>{
    useEffect(()=>{
        const init=async()=>{
          socketRef.current=await initSocket();
+  
          socketRef.current.on('connect_error', (err) => handleErrors(err));
          socketRef.current.on('connect_failed', (err) => handleErrors(err));
          socketRef.current.emit(ACTIONS.JOIN,{
+               
                 nestID,
                 username:location.state?.username,
-         });
+         },[]);
 
 
          //Listening for the event in which a new user has joined the NEST
@@ -40,11 +43,15 @@ const CodePage=()=>{
             ({ clients, username, socketId }) => {
                 if (username !== location.state?.username) {
                     toast.success(`${username} joined the nest.`);
-                    console.log(`${username} joined`);
+                    // console.log(`${username} joined`);
                 }
                 
 
                 setClients(clients);
+                socketRef.current.emit(ACTIONS.SYNC_CODE, {
+                    code: codeRef.current,
+                    socketId,
+                });   
                
             }
         );
@@ -96,7 +103,19 @@ const CodePage=()=>{
     if(!location.state){
         return <Navigate to="/"/>
     }
-  
+
+    async function copyNestID() {
+        try {
+            await navigator.clipboard.writeText(nestID);
+            toast.success('Room ID has been copied to your clipboard');
+        } catch (err) {
+            toast.error('Could not copy the Room ID');
+            console.error(err);
+        }
+    }
+    function leaveRoom() {
+        reactNavigator('/');
+    }
 
     
 
@@ -116,16 +135,21 @@ const CodePage=()=>{
                                 </div>
                         </div>
 
-                        <button className="btn copyBtn">
+                        <button className="btn copyBtn" onClick={copyNestID}>
                              Copy Nest ID
                         </button>
-                        <button className="btn leaveBtn">
+                        <button className="btn leaveBtn" onClick={leaveRoom}>
                              Leave Nest
                         </button>
                 </div>   
 
             <div className="editorWrap">
-                <Editor />
+                <Editor 
+                socketRef={socketRef}
+                nestID={nestID}
+                onCodeChange={(code) => {
+                    codeRef.current = code;
+                }}/>
             </div>
     </div>
     

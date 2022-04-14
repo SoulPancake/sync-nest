@@ -1,12 +1,12 @@
 import { io } from 'socket.io-client';
 export const initSocket = async () => {
-    const socket="http://localhost:5000"
+   
     const options = {
-        'force new connection': true,
+        'force new connection': false,
         reconnectionAttempt: 'Infinity',
         timeout: 10000,
         transports: ['websocket'],
     };
     
-    return io(socket, options);
+    return io('http://localhost:5000',options);
 };
