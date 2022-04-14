@@ -280,11 +280,14 @@ object-fit: contain;
 
 
 .animal{
-  size:70px;
+  height: 70px;
+  width: 70px;
 }
 
 .animal:hover{
-  size:90px;
+  height: 90px;
+  width: 90px;
+  
 }
 
 
