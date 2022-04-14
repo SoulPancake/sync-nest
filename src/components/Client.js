@@ -3,7 +3,7 @@ import Animal from "react-animals";
 const Client=({username})=>{
     return (
     <div className="client">
-        <div className="animal"><Animal dance size="100%" className="avatar"></Animal></div>
+        <Animal dance size="100%" className="avatar"></Animal>
         
         <span className="username">{username}</span>
          
