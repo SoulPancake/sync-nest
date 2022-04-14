@@ -144,7 +144,7 @@ footer a:hover{
 }
 
 .aside{
-  background: #dd3d3d;
+  background: #099198;
   padding: 16px;
   color: #fff;
   display: flex;
@@ -186,7 +186,7 @@ object-fit: contain;
 
 .copyBtn:hover,
 .leaveBtn:hover{
-  background:#025b52;
+  background:#000000;
   font-size: 17.5px;
   margin-left: auto;
   margin-right: auto;
@@ -256,13 +256,13 @@ object-fit: contain;
   border-radius: 10px;
 }
 
-
-
-
-
-.mainWrap{
-  overflow: hidden;
+.avatar:hover{
+  border-radius: 20px;
 }
+
+
+
+
 
 
 
@@ -275,7 +275,7 @@ object-fit: contain;
   height: 100%;
   position: absolute;
   
-  left: 0px;
+  
 }
 
 

@@ -13,6 +13,14 @@ import { useLocation,
 
 
 const CodePage=()=>{
+    let loadingGif = require("../assets/gif2.gif");
+    const [showLoadingVideo,setShowElement] = useState(true)
+    useEffect(()=>{
+      setTimeout(function() {
+        setShowElement(false)
+           }, 1000);
+         },
+     [])
 
    const socketRef=useRef(null);
    const codeRef = useRef(null);
@@ -101,6 +109,7 @@ const CodePage=()=>{
         socketRef.current.disconnect();
         socketRef.current.off(ACTIONS.JOINED);
         socketRef.current.off(ACTIONS.DISCONNECTED);
+        
     };
    },[]);
 
@@ -128,7 +137,9 @@ const CodePage=()=>{
 
     
 
-    return <div className="mainWrap">
+    return <div>
+        {showLoadingVideo?<img src={loadingGif} id="loading-gif" alt="Welcome!" />:<></>}
+        {!showLoadingVideo?<div className="mainWrap">
                <div className="aside">
                         <div className="asideInner">
                                 <div className="asideLogo">
@@ -160,7 +171,9 @@ const CodePage=()=>{
                     codeRef.current = code;
                 }}/>
             </div>
-    </div>
+    </div>:<></>}
+        
+          </div>
     
 };
 

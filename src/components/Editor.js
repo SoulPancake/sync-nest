@@ -12,7 +12,7 @@ import ACTIONS from '../Actions'
     const editorRef = useRef(null);
     useEffect(()=>{
         async function init(){
-            Codemirror.fromTextArea(document.getElementById('realtimeeditor'),
+            editorRef.current =Codemirror.fromTextArea(document.getElementById('realtimeeditor'),
             {
                 mode:{name:'javascript',json:true},
                 theme:'yonce',
@@ -42,6 +42,8 @@ import ACTIONS from '../Actions'
             socketRef.current.on(ACTIONS.CODE_CHANGE, ({ code }) => {
                 if (code !== null) {
                     editorRef.current.setValue(code);
+                }else{
+                    
                 }
             });
         }
