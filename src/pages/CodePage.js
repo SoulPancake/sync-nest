@@ -29,6 +29,13 @@ const CodePage=()=>{
   
          socketRef.current.on('connect_error', (err) => handleErrors(err));
          socketRef.current.on('connect_failed', (err) => handleErrors(err));
+         
+         function handleErrors(e) {
+            console.log('socket error', e);
+            toast.error('Socket connection failed, try again later.');
+            reactNavigator('/');
+        }
+
          socketRef.current.emit(ACTIONS.JOIN,{
                
                 nestID,
@@ -44,6 +51,8 @@ const CodePage=()=>{
                 if (username !== location.state?.username) {
                     toast.success(`${username} joined the nest.`);
                     // console.log(`${username} joined`);
+                }else{
+                    toast.success(`Welcome to the nest!`)
                 }
                 
 
@@ -83,16 +92,16 @@ const CodePage=()=>{
 
         
 
-            function handleErrors(e) {
-                console.log('socket error', e);
-                toast.error('Socket connection failed, try again later.');
-                reactNavigator('/');
-            }
+           
 
       
        };
        init();
-      
+       return () => {
+        socketRef.current.disconnect();
+        socketRef.current.off(ACTIONS.JOINED);
+        socketRef.current.off(ACTIONS.DISCONNECTED);
+    };
    },[]);
 
 
