@@ -279,14 +279,10 @@ object-fit: contain;
 }
 
 
-.animal{
-  height: 70px;
-  width: 70px;
-}
+
 
 .animal:hover{
-  height: 90px;
-  width: 90px;
+  zoom: 110%;
   
 }
 
