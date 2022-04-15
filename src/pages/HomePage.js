@@ -7,6 +7,7 @@ const HomePage=()=>{
     const navigate=useNavigate();
     const [nestID,setNestID]=useState('');
     const [username,setUsername]=useState('');
+
     const createNewNest=(e)=>{
         e.preventDefault();
         const id=uuidv4();
@@ -15,8 +16,8 @@ const HomePage=()=>{
         toast.success('Created a new Nest')
     };
 
-    const joinNest=(e)=>{
-        console.log("hit")
+    const joinNest=()=>{
+        
       if(!nestID || !username){
           toast.error('Both nest ID and username required')
           return
@@ -28,9 +29,8 @@ const HomePage=()=>{
                 username,
 
             },
-        })
+        });
       }
-
     };
 
     const handleEnterKey=(e)=>{
