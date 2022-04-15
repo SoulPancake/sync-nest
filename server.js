@@ -52,9 +52,13 @@ io.on('connection',(socket)=>{
         socket.in(nestID).emit(ACTIONS.CODE_CHANGE, { code });
     });
 
+
+    
     socket.on(ACTIONS.SYNC_CODE, ({ socketId, code }) => {
         io.to(socketId).emit(ACTIONS.CODE_CHANGE, { code });
     });
+
+
 
     socket.on('disconnecting', () => {
         const rooms = [...socket.rooms];
@@ -66,12 +70,10 @@ io.on('connection',(socket)=>{
         });
         delete userSocketMap[socket.id];
         socket.leave();
-    });
+    });   
+});
 
-  
-  
-     
-})
+
 
 const PORT=process.env.PORT || 5000
 server.listen(PORT,()=>console.log(`Listening on port ${PORT}`));
