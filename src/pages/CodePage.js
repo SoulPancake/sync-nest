@@ -14,7 +14,7 @@ import { useLocation,
 
 const CodePage=()=>{
 
-    let loadingGif = require("../assets/gif2.gif");
+    let loadingGif = require("../assets/gif.gif");
     const [showLoadingVideo,setShowElement] = useState(true)
     useEffect(()=>{
       setTimeout(function() {

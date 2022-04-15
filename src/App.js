@@ -18,7 +18,7 @@ function App() {
        },
    [])
 
-  let loadingGif = require("./assets/gif2.gif");
+  let loadingGif = require("./assets/gif.gif");
   return (
     
 
