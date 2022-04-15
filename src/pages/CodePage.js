@@ -68,7 +68,7 @@ const CodePage=()=>{
                 socketRef.current.emit(ACTIONS.SYNC_CODE, {
                     code: codeRef.current,
                     socketId,
-                });   
+                });
                
             }
         );
@@ -118,16 +118,14 @@ const CodePage=()=>{
    
     
 
-    if(!location.state){
-        return <Navigate to="/"/>
-    }
+    
 
     async function copyNestID() {
         try {
             await navigator.clipboard.writeText(nestID);
-            toast.success('Room ID has been copied to your clipboard');
+            toast.success('Nest ID has been copied to your clipboard');
         } catch (err) {
-            toast.error('Could not copy the Room ID');
+            toast.error('Could not copy the Nest ID');
             console.error(err);
         }
     }
@@ -135,7 +133,9 @@ const CodePage=()=>{
         reactNavigator('/');
     }
 
-    
+    if (!location.state) {
+        return <Navigate to="/" />;
+    }
 
     return <div>
         {showLoadingVideo?<img src={loadingGif} id="loading-gif" alt="Welcome!" />:<></>}
