@@ -2,7 +2,7 @@
 import React, { useEffect,useRef } from "react"
 import Codemirror from 'codemirror';
 import 'codemirror/lib/codemirror.css'
-import 'codemirror/mode/javascript/javascript';
+import 'codemirror/mode/python/python';
 import 'codemirror/theme/bespin.css';
 import 'codemirror/addon/edit/closetag'
 import 'codemirror/addon/edit/closebrackets'
@@ -15,7 +15,7 @@ import ACTIONS from '../Actions'
             editorRef.current =Codemirror.fromTextArea(
                 document.getElementById('realtimeeditor'),
              {
-                mode:{name:'java',json:true},
+                mode:{name:'python'},
                 theme:'bespin',
                 autoCloseTags:true,
                 autoCloseBrackets:true,
