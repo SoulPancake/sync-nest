@@ -4,6 +4,7 @@ const Client=({username})=>{
     return (
     <div className="client">
         <Animal dance className="avatar"></Animal>
+        
         <span className="username">{username}</span>
          
    </div>)
