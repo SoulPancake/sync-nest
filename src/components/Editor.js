@@ -12,14 +12,16 @@ import ACTIONS from '../Actions'
     const editorRef = useRef(null);
     useEffect(()=>{
         async function init(){
-            editorRef.current =Codemirror.fromTextArea(document.getElementById('realtimeeditor'),
-            {
+            editorRef.current =Codemirror.fromTextArea(
+                document.getElementById('realtimeeditor'),
+             {
                 mode:{name:'javascript',json:true},
                 theme:'yonce',
                 autoCloseTags:true,
                 autoCloseBrackets:true,
                 lineNumbers:true,
-            },);
+              }
+            );
 
             editorRef.current.on('change', (instance, changes) => {
                 const { origin } = changes;
@@ -32,7 +34,7 @@ import ACTIONS from '../Actions'
                     });
                 }
             });
-        };
+        }
         init();
     },[]);
 
@@ -42,8 +44,6 @@ import ACTIONS from '../Actions'
             socketRef.current.on(ACTIONS.CODE_CHANGE, ({ code }) => {
                 if (code !== null) {
                     editorRef.current.setValue(code);
-                }else{
-                    
                 }
             });
         }
