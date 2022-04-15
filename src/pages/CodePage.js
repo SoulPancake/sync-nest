@@ -48,7 +48,7 @@ const CodePage=()=>{
                
                 nestID,
                 username:location.state?.username,
-         },[]);
+         });
 
 
          //Listening for the event in which a new user has joined the NEST
