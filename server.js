@@ -1,6 +1,7 @@
 const express= require('express')
 const app= express();
 const http= require('http')
+const path=require('path')
 const { Server } = require('socket.io');
 const ACTIONS = require('./src/Actions');
 
@@ -41,7 +42,7 @@ io.on('connection',(socket)=>{
             io.to(socketId).emit(ACTIONS.JOINED,{
                 clients,
                 username,
-                socketId:socketId,
+                socketId:socket.id,
             })
         })
 

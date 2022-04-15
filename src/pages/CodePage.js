@@ -13,6 +13,7 @@ import { useLocation,
 
 
 const CodePage=()=>{
+
     let loadingGif = require("../assets/gif2.gif");
     const [showLoadingVideo,setShowElement] = useState(true)
     useEffect(()=>{
@@ -56,6 +57,7 @@ const CodePage=()=>{
          socketRef.current.on(
             ACTIONS.JOINED,
             ({ clients, username, socketId }) => {
+
                 if (username !== location.state?.username) {
                     toast.success(`${username} joined the nest.`);
                     // console.log(`${username} joined`);
@@ -66,7 +68,7 @@ const CodePage=()=>{
 
                 setClients(clients);
                 socketRef.current.emit(ACTIONS.SYNC_CODE, {
-                    code: codeRef.current,
+                    code:codeRef.current,
                     socketId,
                 });
                
