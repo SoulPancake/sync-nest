@@ -3,7 +3,7 @@ WORKDIR /sample-react-app
 ENV PATH="./node_modules/.bin:$PATH"
 COPY package.json ./
 COPY package-lock.json ./
-RUN npm install
+RUN npm install i
 COPY . ./
 RUN npm run build
 # EXPOSE 3000 We don't need to expose it !
